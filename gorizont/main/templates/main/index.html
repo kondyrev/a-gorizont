@@ -1,0 +1,226 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}главная страница{% endblock %}
+
+
+{% block slider %}
+<div class="banner-carousel banner-carousel-1 mb-0">
+    {% for slide in slidemain %}
+
+          <div class="banner-carousel-item" style="background-image:url({{slide.slimage.url}})">
+            <div class="slider-content">
+                <div class="container h-100">
+                  <div class="row align-items-center h-100">
+                      <div class="col-md-12 text-center">
+                        <h2 class="slide-title" data-animation-in="slideInLeft"></h2>
+                        <h3 class="slide-sub-title shadow-sm p-3 mb-5 bg-body-tertiary rounded" data-animation-in="slideInRight">{{slide.slhead}}</h3>
+                          <p class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">{{slide.slp}}</p>
+                        <p data-animation-in="slideInLeft" data-duration-in="1.2">
+                            <a href="{% url 'price' %}" class="slider btn btn-primary">Цены</a>
+                            <a href="{% url 'contakt' %}" class="slider btn btn-primary border">Контакты</a>
+                        </p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="row">
+        <div class="col-lg-6">
+          <div class="ts-intro">
+              <h2 class="into-title">О нас</h2>
+              <h3 class="into-sub-title">{{about.header}}</h3>
+              <p>{{about.text}}</p>
+          </div><!-- Intro box end -->
+
+          <div class="gap-20"></div>
+
+          <div class="row">
+              <div class="col-md-6">
+                <div class="ts-service-box">
+                    <span class="ts-service-icon">
+                      <i class="fas fa-trophy"></i>
+                    </span>
+                    <div class="ts-service-box-content">
+                      <h3 class="service-box-title">успешная сдача экзамена в ГИБДД</h3>
+                    </div>
+                </div><!-- Service 1 end -->
+              </div><!-- col end -->
+
+              <div class="col-md-6">
+                <div class="ts-service-box">
+                    <span class="ts-service-icon">
+                      <i class="fas fa-sliders-h"></i>
+                    </span>
+                    <div class="ts-service-box-content">
+                      <h3 class="service-box-title">Оплата в рассрочку</h3>
+                    </div>
+                </div><!-- Service 2 end -->
+              </div><!-- col end -->
+          </div><!-- Content row 1 end -->
+
+          <div class="row">
+              <div class="col-md-6">
+                <div class="ts-service-box">
+                    <span class="ts-service-icon">
+                      <i class="fas fa-thumbs-up"></i>
+                    </span>
+                    <div class="ts-service-box-content">
+                      <h3 class="service-box-title">Индивидуальный подход</h3>
+                    </div>
+                </div><!-- Service 1 end -->
+              </div><!-- col end -->
+
+              <div class="col-md-6">
+                <div class="ts-service-box">
+                    <span class="ts-service-icon">
+                      <i class="fas fa-users"></i>
+                    </span>
+                    <div class="ts-service-box-content">
+                      <h3 class="service-box-title">Опытные инструктора</h3>
+                    </div>
+                </div><!-- Service 2 end -->
+              </div><!-- col end -->
+          </div><!-- Content row 1 end -->
+        </div><!-- Col end -->
+
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <h3 class="into-sub-title">Популярные вопросы студентов</h3>
+          <p>  </p>
+
+          <div class="accordion accordion-group" id="our-values-accordion">
+
+              {% for q in quest %}
+
+
+              <div class="card">
+                <div class="card-header p-0 bg-transparent" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          {{q.question}}
+                      </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#our-values-accordion" style="">
+                    <div class="card-body">
+                      {{q.answer}}
+                    </div>
+                </div>
+              </div>
+
+              {%endfor%}
+          </div>
+          <!--/ Accordion end -->
+
+        </div><!-- Col end -->
+    </div>
+
+
+    <section id="main-container" class="main-container">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-12">
+        <h2 class="section-title">выбор программы обучения</h2>
+        <h3 class="section-sub-title">Цены</h3>
+      </div>
+    </div>
+    <!--/ Title row end -->
+
+    <div class="row">
+
+      <div class="col-lg-4 col-md-9">
+        <div class="ts-pricing-box">
+          <div class="ts-pricing-header">
+            <h2 class="ts-pricing-name">Категория B</h2>
+            <h2 class="ts-pricing-price">
+              <span class="currency">₽</span><strong>45 000</strong><small>МКПП</small>
+            </h2>
+          </div><!-- Pricing header -->
+          <div class="ts-pricing-features">
+            <ul class="list-unstyled">
+              <li>Полный курс теории</li>
+              <li>Полный курс вождения</li>
+              <li>Расходы на бензин</li>
+              <li>Обучение оказанию первой помощи</li>
+              <li>SMS-напоминания</li>
+              <li>Психологическая поддержка</li>
+            </ul>
+          </div><!-- Features end -->
+          <div class="plan-action">
+            <a href="#" class="btn btn-dark">Записаться сейчас</a>
+          </div>
+        </div><!-- Plan 1 end -->
+      </div><!-- Col end -->
+
+      <div class="col-lg-4 col-md-9">
+        <div class="ts-pricing-box ts-pricing-featured">
+          <div class="ts-pricing-header">
+            <h2 class="ts-pricing-name">Категория В</h2>
+            <h2 class="ts-pricing-price">
+              <span class="currency">₽</span><strong>30 000</strong><small>СПЕЦУСЛОВИЯ*</small>
+            </h2>
+          </div><!-- Pricing header -->
+          <div class="ts-pricing-features">
+            <ul class="list-unstyled">
+              <li>Полный курс теории</li>
+              <li>Полный курс вождения</li>
+              <li>Расходы на бензин</li>
+              <li>Обучение оказанию первой помощи</li>
+              <li>SMS-напоминания</li>
+              <li>Психологическая поддержка</li>
+            </ul>
+          </div><!-- Features end -->
+          <div class="plan-action">
+            <a href="#" class="btn btn-primary">Записаться сейчас</a>
+          </div>
+        </div><!-- Plan 2 end -->
+      </div><!-- Col end -->
+
+      <div class="col-lg-4 col-md-9">
+        <div class="ts-pricing-box">
+          <div class="ts-pricing-header">
+            <h2 class="ts-pricing-name">Категория B</h2>
+            <h2 class="ts-pricing-price">
+              <span class="currency">₽</span><strong>45 000</strong><small>АКПП</small>
+            </h2>
+          </div><!-- Pricing header -->
+          <div class="ts-pricing-features">
+            <ul class="list-unstyled">
+              <li>Полный курс теории</li>
+              <li>Полный курс вождения</li>
+              <li>Расходы на бензин</li>
+              <li>Обучение оказанию первой помощи</li>
+              <li>SMS-напоминания</li>
+              <li>Психологическая поддержка</li>
+            </ul>
+          </div><!-- Features end -->
+          <div class="plan-action">
+            <a href="#" class="btn btn-dark">Записаться сейчас</a>
+          </div>
+        </div><!-- Plan 1 end -->
+      </div><!-- Col end -->
+
+
+
+    </div>
+    <!--/ Content row end -->
+
+  </div><!-- Conatiner end -->
+</section>
+
+
+
+
+
+
+
+{% endblock %}
