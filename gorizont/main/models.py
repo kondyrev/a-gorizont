@@ -37,3 +37,15 @@ class Quest(models.Model):
     class Meta:
         verbose_name='Вопрос-ответ'
         verbose_name_plural='Вопросы и ответы'
+
+
+class Prices(models.Model):
+    cost = models.CharField('стоимость', max_length=5)
+    description = models.CharField('описание', max_length=20)
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        verbose_name = 'Соимость'
+        verbose_name_plural = 'Цена'
