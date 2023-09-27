@@ -2,13 +2,15 @@ from django.shortcuts import render
 from .models import Slidemainpage
 from .models import Aboutus
 from .models import Quest
+from .models import Prices
 
 
 def index(request):
     slidemain = Slidemainpage.objects.all()
     aboutus = Aboutus.objects.get()
     quest = Quest.objects.all()
-    return render(request, 'main/index.html', {'slidemain' : slidemain, 'about' : aboutus, 'quest' : quest})
+    prises = Prices.objects.all()
+    return render(request, 'main/index.html', {'slidemain' : slidemain, 'about' : aboutus, 'quest' : quest, 'prices': prises})
 
 def about(request):
     return render(request, 'main/about.html')
