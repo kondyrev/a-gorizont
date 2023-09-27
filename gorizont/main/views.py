@@ -3,6 +3,7 @@ from .models import Slidemainpage
 from .models import Aboutus
 from .models import Quest
 from .models import Prices
+from .models import Testimonials
 
 
 def index(request):
@@ -10,7 +11,10 @@ def index(request):
     aboutus = Aboutus.objects.get()
     quest = Quest.objects.all()
     prises = Prices.objects.all()
-    return render(request, 'main/index.html', {'slidemain' : slidemain, 'about' : aboutus, 'quest' : quest, 'prices': prises})
+    testi = Testimonials.objects.all()[:3]
+
+
+    return render(request, 'main/index.html', {'slidemain' : slidemain, 'about' : aboutus, 'quest' : quest, 'prices': prises, 'testi': testi})
 
 def about(request):
     return render(request, 'main/about.html')
