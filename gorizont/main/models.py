@@ -52,3 +52,16 @@ class Prices(models.Model):
     class Meta:
         verbose_name = 'Соимость'
         verbose_name_plural = 'Цена'
+
+class Testimonials(models.Model):
+    name = models.CharField('Имя', max_length=30)
+    title = models.CharField('Подпись', max_length=30)
+    photo = models.ImageField(upload_to='static/main/images/')
+    text = models.TextField('Отзыв')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
