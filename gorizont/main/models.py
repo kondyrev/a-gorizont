@@ -42,6 +42,12 @@ class Quest(models.Model):
 class Prices(models.Model):
     cost = models.CharField('стоимость', max_length=5)
     description = models.CharField('описание', max_length=20)
+    TYPE_CHOICES = (
+       ('y', 'Да'),
+       ('m', 'Нет'),
+     )
+    yellow = models.CharField(max_length=1, choices=TYPE_CHOICES, default='y')
+
 
     def __str__(self):
         return self.description
